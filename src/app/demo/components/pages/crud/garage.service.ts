@@ -43,7 +43,7 @@ export class GarageService {
   }
 
   updateCar(car: Car): Observable<any> {
-    const url = `${this.urls}/car/${Car.id}`;
+    const url = `${this.urls}/`;
     return this.http.put(url, car);
   }
 }
