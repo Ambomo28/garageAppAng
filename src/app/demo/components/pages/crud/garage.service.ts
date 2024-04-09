@@ -16,25 +16,23 @@ import { Car } from './models';
 export class GarageService {
     httpClient: any;
 
-    URL = `${environment.apiUrl}/cars`;
-    urls = `${environment.apiUrl}`;
+   
     car:  object;
 
-    readonly API_URL = "http://localhost:8080"
-
-  readonly ENDPOINT_CARS = "/cars"
+    URL = `${environment.apiUrl}/cars`;
+    urls = `${environment.apiUrl}`;
 
   
 
   constructor(private http: HttpClient) { }
 
   getCars(): Observable<any> {
-    return this.httpClient.get(this.API_URL+this.ENDPOINT_CARS)
-  }
+    return this.http.get<Car[]>(this.URL);
+}
  
   addCar(car: Car): Observable<any> {
 
-    return this.http.get(this.API_URL+this.ENDPOINT_CARS);
+    return this.http.get(this.URL);
   }
 
   deleteSelectedCar(id: number): Observable<any> {
@@ -43,7 +41,7 @@ export class GarageService {
   }
 
   updateCar(car: Car): Observable<any> {
-    const url = `${this.urls}/`;
+    const url = `${this.urls}/gi`;
     return this.http.put(url, car);
   }
 }
